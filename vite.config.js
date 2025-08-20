@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   build: {
     rollupOptions: {
-      external: ["lucide-react"], // Add lucide-react here
+      external: ["lucide-react", "axios"], // Add lucide-react here
     },
   },
   plugins: [tailwindcss()],
