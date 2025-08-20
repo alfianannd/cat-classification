@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  PawPrint,
-  ImagePlus,
-} from "lucide-react";
+import { PawPrint, ImagePlus } from "lucide-react";
 
 const Scan = () => {
   const videoRef = useRef(null);
@@ -14,7 +11,9 @@ const Scan = () => {
   useEffect(() => {
     const startCamera = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -57,7 +56,6 @@ const Scan = () => {
     { src: "/images/cat6.png", style: "top-[74%] left-[3%] w-55" },
     { src: "/images/cat_scan3.png", style: "bottom-[4%] left-[86%] w-45" },
   ];
-  
 
   return (
     <div className="relative h-screen w-screen bg-white overflow-hidden flex flex-col items-center justify-center px-4 py-6">
@@ -65,7 +63,11 @@ const Scan = () => {
       <div className="absolute inset-0 pointer-events-none z-0">
         {decorations.map((item, index) => (
           <div key={index} className={`absolute ${item.style}`}>
-            <img src={item.src} alt={`dec-${index}`} className="w-full h-auto" />
+            <img
+              src={item.src}
+              alt={`dec-${index}`}
+              className="w-full h-auto"
+            />
           </div>
         ))}
       </div>
@@ -87,12 +89,21 @@ const Scan = () => {
         <div className="sm:self-end">
           <label className="cursor-pointer text-emerald-500 hover:text-emerald-700 transition hover:scale-110 rounded-full bg-white p-2 shadow-md">
             <ImagePlus className="w-7 h-7" />
-            <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleUpload}
+              className="hidden"
+            />
           </label>
         </div>
 
         <div className="relative w-full sm:w-[640px] aspect-video border-4 border-gray-700 rounded-xl overflow-hidden shadow-2xl bg-white flex items-center justify-center">
-          <video ref={videoRef} autoPlay className="w-full h-full object-cover" />
+          <video
+            ref={videoRef}
+            autoPlay
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
@@ -100,7 +111,9 @@ const Scan = () => {
       <div className="mt-4 flex flex-col items-center z-20">
         <button
           onClick={handleTakePicture}
-          className={`text-black transition hover:scale-110 ${bounce ? "animate-bounce" : ""}`}
+          className={`text-black transition hover:scale-110 ${
+            bounce ? "animate-bounce" : ""
+          }`}
         >
           <PawPrint className="w-10 h-10" />
         </button>
